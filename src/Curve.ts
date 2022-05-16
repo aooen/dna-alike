@@ -16,7 +16,17 @@ class Curve {
   }
 
   getY(x: number) {
-    return Math.sin((x + this.dx - 50) * 0.03) * this.amplitude + this.dy
+    return Math.sin((x + this.dx) * 0.03) * this.amplitude + this.dy
+  }
+
+  getJoints(start: number, end: number) {
+    const halfWavelength = Math.PI / 0.03
+    const unit = halfWavelength / 4
+    const result: Array<number> = []
+    for (let i = start + this.dx; i < end; i += unit) {
+      result.push(i)
+    }
+    return result
   }
 }
 
